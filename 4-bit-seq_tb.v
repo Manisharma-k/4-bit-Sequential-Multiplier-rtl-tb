@@ -1,24 +1,10 @@
-module bcd_tb();
-reg clk;     
-reg rst;   
-wire [3:0] ones;
-wire [3:0] tens; 
-bcd_count dut(clk,rst,ones,tens);
-initial 
+module mul_4TB();
+reg [3:0]a,b;
+wire [7:0]y;
+mul_4 m(a,b,y);
+initial
 begin
-clk=0;
-forever #10 clk = ~clk; 
-end
-initial 
-begin   
-clk = 0;
-rst = 1;       
-#10 rst = 0;
-#2000 $stop;
-end
-initial 
-begin
-$monitor("Time = %t, tens = %d ,ones = %d",$time, tens, ones);
+a=4'b1100;
+b=4'b1101;
 end
 endmodule
-
